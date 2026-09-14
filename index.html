@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anil Murty</title>
+<meta name="description" content="Anil Murty — founder of TokenJam. Engineer, product leader, and builder of AI and cloud infrastructure, with roots in Wi‑Fi and firmware.">
+<meta property="og:title" content="Anil Murty">
+<meta property="og:description" content="Founder of TokenJam. Twenty years building infrastructure products, from firmware to AI agents.">
+<meta property="og:url" content="https://anilmurty.github.io">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232b62e3'/><text x='16' y='22' font-family='monospace' font-size='17' font-weight='700' fill='white' text-anchor='middle'>AM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #151a21;
+    --ink-2: #3b4450;
+    --muted: #5c6673;
+    --line: #dde1e7;
+    --line-strong: #c6ccd5;
+    --blue: #2b62e3;
+    --blue-soft: #e6edfc;
+    --copper: #b5652b;
+    --copper-soft: #f8ece2;
+    --tile: #eef1f5;
+    --code-bg: #151a21;
+    --code-ink: #e8ecf2;
+    --shadow: 0 1px 2px rgba(21,26,33,.06), 0 8px 24px -12px rgba(21,26,33,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1318; --surface: #161b22; --ink: #eef1f5; --ink-2: #c8cfd8; --muted: #8b95a3;
+      --line: #263040; --line-strong: #344256; --blue: #6a98ff; --blue-soft: #16243f;
+      --copper: #e0955f; --copper-soft: #33241a; --tile: #1c222b; --code-bg: #0a0d11; --code-ink: #dfe5ee;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1318; --surface: #161b22; --ink: #eef1f5; --ink-2: #c8cfd8; --muted: #8b95a3;
+    --line: #263040; --line-strong: #344256; --blue: #6a98ff; --blue-soft: #16243f;
+    --copper: #e0955f; --copper-soft: #33241a; --tile: #1c222b; --code-bg: #0a0d11; --code-ink: #dfe5ee;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif; text-wrap: balance; margin: 0; line-height: 1.15; }
+  h1 { font-size: clamp(2.4rem, 5.5vw, 3.6rem); font-weight: 700; letter-spacing: -.02em; }
+  h2 { font-size: 1.75rem; font-weight: 650; letter-spacing: -.015em; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p { margin: 0; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+
+  .wrap { width: min(1040px, 100% - 2.5rem); margin-inline: auto; }
+  .prose { max-width: 68ch; }
+
+  /* nav */
+  nav.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 1rem; }
+  nav.top .brand { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+  nav.top ul { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+  nav.top ul a { color: var(--ink-2); }
+  @media (max-width: 640px) { nav.top ul { gap: .9rem; font-size: .85rem; } nav.top ul li:nth-child(n+4) { display: none; } }
+
+  section { padding: 4.5rem 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); font-size: .98rem; }
+
+  /* hero */
+  header.hero { padding: 5rem 0 4rem; }
+  header.hero .eyebrow { margin-bottom: 1.2rem; }
+  header.hero h1 { margin-bottom: 1.2rem; }
+  header.hero .lede { font-size: 1.22rem; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin-bottom: 1.6rem; }
+  header.hero .arc { color: var(--muted); max-width: 68ch; }
+  header.hero .links { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 2rem; }
+  .pill { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .85rem; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink); font-size: .9rem; background: var(--surface); transition: border-color .15s, background .15s; }
+  .pill:hover { border-color: var(--blue); text-decoration: none; }
+  .pill.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .pill.primary:hover { background: var(--blue); border-color: var(--blue); }
+  .pill svg { width: 15px; height: 15px; fill: currentColor; }
+
+  /* tokenjam feature */
+  .feature { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: start; }
+  @media (max-width: 800px) { .feature { grid-template-columns: 1fr; } }
+  .feature .title { display: flex; align-items: center; gap: .8rem; margin-bottom: .9rem; }
+  .feature .title h2 { font-size: 2.1rem; }
+  .feature .tag { font-family: "IBM Plex Mono", monospace; font-size: .72rem; padding: .2rem .5rem; border-radius: 4px; background: var(--blue-soft); color: var(--blue); letter-spacing: .06em; text-transform: uppercase; }
+  .feature .desc { color: var(--ink-2); margin-bottom: 1.4rem; max-width: 58ch; }
+  .install { display: flex; align-items: center; gap: .8rem; background: var(--code-bg); color: var(--code-ink); padding: .8rem 1rem; border-radius: 8px; font-size: .92rem; overflow-x: auto; white-space: nowrap; margin-bottom: 1.4rem; }
+  .install .dollar { color: #6a98ff; user-select: none; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.4rem; }
+  @media (max-width: 520px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--tile); border-radius: 8px; padding: .9rem 1rem; }
+  .stat b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.7rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .8rem; color: var(--muted); }
+  .repos { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  .repos li { display: grid; grid-template-columns: auto 1fr auto; gap: .8rem; align-items: baseline; padding: .55rem 0; border-top: 1px solid var(--line); font-size: .95rem; }
+  .repos li:last-child { border-bottom: 1px solid var(--line); }
+  .repos .name { font-family: "IBM Plex Mono", monospace; font-size: .88rem; }
+  .repos .what { color: var(--muted); }
+  .repos .stars { font-family: "IBM Plex Mono", monospace; font-size: .82rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .shot { border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden; background: var(--surface); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { font-size: .8rem; color: var(--muted); padding: .6rem .9rem; border-top: 1px solid var(--line); }
+
+  /* projects */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .card { display: flex; flex-direction: column; gap: .6rem; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem 1.25rem 1.1rem; color: var(--ink); transition: border-color .15s, transform .15s; }
+  .card:hover { border-color: var(--line-strong); text-decoration: none; transform: translateY(-2px); }
+  .card .top { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; }
+  .card .kind { font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .card .kind.product { color: var(--copper); }
+  .card h3 { font-size: 1.1rem; }
+  .card p { font-size: .93rem; color: var(--ink-2); flex: 1; }
+  .card .stack { font-family: "IBM Plex Mono", monospace; font-size: .76rem; color: var(--muted); }
+  .card .meta { display: flex; gap: .9rem; font-family: "IBM Plex Mono", monospace; font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+  .card .meta .live { color: var(--blue); }
+
+  /* experience */
+  .legend { display: flex; gap: 1.4rem; font-size: .85rem; color: var(--muted); margin-bottom: 1.6rem; flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: .45rem; vertical-align: -1px; }
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .job { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem; padding: 1.4rem 0 1.4rem 1.75rem; }
+  .job + .job { border-top: 1px solid var(--line); }
+  .job::before { content: ""; position: absolute; left: -7px; top: 1.85rem; width: 12px; height: 12px; border-radius: 3px; background: var(--era); border: 2px solid var(--bg); }
+  .job[data-era="cloud"] { --era: var(--blue); }
+  .job[data-era="hw"] { --era: var(--copper); }
+  .job .when { font-family: "IBM Plex Mono", monospace; font-size: .82rem; color: var(--muted); padding-top: .3rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .job .when small { display: block; font-size: .72rem; margin-top: .25rem; color: var(--muted); opacity: .8; white-space: normal; }
+  .job h3 { font-size: 1.12rem; }
+  .job .role { color: var(--muted); font-size: .95rem; margin: .15rem 0 .6rem; }
+  .job ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .95rem; display: grid; gap: .3rem; }
+  .job ul li::marker { color: var(--era); }
+  @media (max-width: 640px) { .job { grid-template-columns: 1fr; gap: .4rem; } .job .when { padding-top: 0; } }
+  .earlier { color: var(--muted); font-size: .92rem; padding: 1.2rem 0 0 1.75rem; }
+
+  /* education / footer */
+  .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 700px) { .edu { grid-template-columns: 1fr; } }
+  .edu div { border-top: 2px solid var(--line-strong); padding-top: .8rem; }
+  .edu b { display: block; font-weight: 600; }
+  .edu span { color: var(--muted); font-size: .92rem; }
+  footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  footer a { color: var(--ink-2); }
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Site">
+  <div class="wrap">
+    <a class="brand" href="#top">Anil Murty</a>
+    <ul>
+      <li><a href="#tokenjam">TokenJam</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="https://github.com/anilmurty">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Portland, OR · Founder @ TokenJam</p>
+    <h1>Engineer, product leader, builder.<br>Twenty years of infrastructure products.</h1>
+    <p class="lede">I started out writing firmware for IP video and Wi‑Fi hardware, moved into product for enterprise networking and then cloud developer platforms, and ran product and engineering for a decentralized GPU cloud. Now I'm building <a href="https://tokenjam.dev">TokenJam</a> solo: open-source tooling that makes AI agents cheaper to run.</p>
+    <p class="arc prose">Motorola → Xirrus → Open Mesh → New Relic → HashiCorp → Kentik → Akash Network → TokenJam</p>
+    <div class="links">
+      <a class="pill primary" href="https://github.com/anilmurty"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a class="pill" href="https://tokenjam.dev">tokenjam.dev</a>
+      <a class="pill" href="https://www.linkedin.com/in/anilmurty">LinkedIn</a>
+      <a class="pill" href="https://x.com/anilmurty_ai">X / @anilmurty_ai</a>
+      <a class="pill" href="https://metabldr.com">metabldr.com</a>
+    </div>
+  </div>
+</header>
+
+<section id="tokenjam">
+  <div class="wrap">
+    <div class="feature">
+      <div>
+        <div class="title"><h2>TokenJam</h2><span class="tag">Featured · Open source</span></div>
+        <p class="desc"><strong>Token efficiency for AI agents.</strong> TokenJam reads your agent's telemetry, finds where tokens are being wasted, and suggests fixes, cutting spend by up to 40%. Works with Claude Code, Codex, and your own SDK or API agents. Runs 100% locally: no cloud, no signup, no vendor lock‑in.</p>
+        <div class="install mono"><span class="dollar">$</span><span>npx tokenjam onboard</span><span style="opacity:.5">&nbsp;# or: pipx install tokenjam &amp;&amp; tj onboard</span></div>
+        <div class="stats" aria-label="TokenJam statistics">
+          <div class="stat"><b data-stat="stars">108</b><span>GitHub stars</span></div>
+          <div class="stat"><b>25</b><span>contributors</span></div>
+          <div class="stat"><b data-stat="forks">28</b><span>forks</span></div>
+          <div class="stat"><b>25K+</b><span>downloads · PyPI + npm</span></div>
+        </div>
+        <ul class="repos">
+          <li><a class="name" href="https://github.com/Metabuilder-Labs/tokenjam">tokenjam</a><span class="what">CLI, analyzers, and the local Lens dashboard. OTel GenAI semconv compatible.</span><span class="stars" data-repo="Metabuilder-Labs/tokenjam">★ 108</span></li>
+          <li><a class="name" href="https://github.com/Metabuilder-Labs/tokenjam-bench">tokenjam-bench</a><span class="what">Evidence-based evals: does "downsize this model" actually hold up?</span><span class="stars" data-repo="Metabuilder-Labs/tokenjam-bench">★ 12</span></li>
+          <li><a class="name" href="https://github.com/Metabuilder-Labs/tokenjam-fleet">tokenjam-fleet</a><span class="what">Reference agents that showcase TokenJam end-to-end.</span><span class="stars" data-repo="Metabuilder-Labs/tokenjam-fleet">★ 1</span></li>
+        </ul>
+      </div>
+      <figure class="shot" style="margin:0">
+        <img src="https://raw.githubusercontent.com/Metabuilder-Labs/tokenjam/main/docs/assets/tokenjam-dashboard.png" alt="TokenJam Lens dashboard showing overspend by category, spend and token totals, and sessions by model over the last 30 days." loading="lazy">
+        <figcaption>TokenJam Lens — the local dashboard. Built and launched solo in under two months; integrations for Claude Code, Codex, LangChain, Langfuse, OpenAI/Anthropic APIs, AWS Bedrock, Gemini ADK, NVIDIA NemoClaw, and LiteLLM.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><h2>Projects</h2><p>Products I've shipped, and the small tools I built along the way to pick the right models and providers.</p></div>
+    <div class="grid">
+      <a class="card" href="https://github.com/anilmurty/twinklebot-mobile-app">
+        <div class="top"><span class="kind product">Product</span></div>
+        <h3>Twinklebot</h3>
+        <p>AI-generated personalized storybooks for kids. Upload a few photos, pick a story template, and your child becomes the hero.</p>
+        <span class="stack">Next.js 16 · React 19 · Supabase · Replicate</span>
+        <span class="meta"><span class="live">twinklebot.app ↗</span><span data-repo="anilmurty/twinklebot-mobile-app"></span></span>
+      </a>
+      <a class="card" href="https://github.com/anilmurty/trycrib">
+        <div class="top"><span class="kind product">Product</span></div>
+        <h3>TryCrib</h3>
+        <p>Try before you buy: book short-term stays in homes you're considering purchasing and test the house, the neighborhood, and the commute before making an offer.</p>
+        <span class="stack">Next.js · TypeScript · Supabase</span>
+        <span class="meta"><span class="live">trycrib.com ↗</span><span data-repo="anilmurty/trycrib"></span></span>
+      </a>
+      <a class="card" href="https://github.com/OpenClawWatch/ocw">
+        <div class="top"><span class="kind product">Agent observability</span></div>
+        <h3>OpenClawWatch</h3>
+        <p>Telemetry and observability for AI agents running on OpenClaw. The ideas here evolved into TokenJam, which now ingests OpenClaw telemetry natively.</p>
+        <span class="stack">Python · OpenTelemetry</span>
+        <span class="meta"><span>Metabuilder Labs</span></span>
+      </a>
+      <a class="card" href="https://github.com/anilmurty/image-gen-evaluator">
+        <div class="top"><span class="kind">Generative media</span></div>
+        <h3>image-gen-evaluator</h3>
+        <p>Compare image-generation models and providers side-by-side. One prompt, every model in parallel, results streaming in with latency and cost per image.</p>
+        <span class="stack">Node.js · SSE · Replicate · xAI</span>
+        <span class="meta"><span data-repo="anilmurty/image-gen-evaluator">★ 1</span></span>
+      </a>
+      <a class="card" href="https://github.com/anilmurty/ai-video-model-tester">
+        <div class="top"><span class="kind">Generative media</span></div>
+        <h3>ai-video-model-tester</h3>
+        <p>Test and compare AI video-generation models (Sora‑2 via OpenAI and Replicate) from a single UI with live progress tracking.</p>
+        <span class="stack">React · Replicate · OpenAI</span>
+        <span class="meta"><span data-repo="anilmurty/ai-video-model-tester"></span></span>
+      </a>
+      <a class="card" href="https://github.com/anilmurty/yt-video-gen-ai">
+        <div class="top"><span class="kind">Generative media</span></div>
+        <h3>yt-video-gen-ai</h3>
+        <p>Transcribe YouTube videos, rewrite the narrative with an LLM, and render a brand-new narrated video with AI visuals.</p>
+        <span class="stack">Python · Whisper · GPT · DALL·E · ElevenLabs</span>
+        <span class="meta"><span data-repo="anilmurty/yt-video-gen-ai"></span></span>
+      </a>
+      <a class="card" href="https://github.com/anilmurty/adda">
+        <div class="top"><span class="kind">Decentralized inference</span></div>
+        <h3>adda</h3>
+        <p>Akash Distributed Diffusion App. Splits the Stable Diffusion pipeline (text encoder → UNet → VAE) into independent services on separate GPU providers across the Akash Network.</p>
+        <span class="stack">PyTorch · Akash · Docker</span>
+        <span class="meta"><span data-repo="anilmurty/adda"></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><h2>Experience</h2><p>Two eras: hardware and firmware first, then cloud and AI infrastructure.</p></div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>Open source, cloud &amp; AI infrastructure</span><span><i style="background:var(--copper)"></i>Hardware, firmware &amp; networking</span></div>
+    <ol class="timeline">
+      <li class="job" data-era="cloud">
+        <div class="when">2026 – present</div>
+        <div>
+          <h3>TokenJam</h3>
+          <p class="role">Solo Founder</p>
+          <ul>
+            <li>AI spend control plane for FinOps teams: see every dollar agents spend, attribute it across departments, agents, providers, models and tools, find waste, and enforce policy. Plus an open-source CLI for individual Claude Code and Codex users.</li>
+            <li>Conceived the product and the open-source-first strategy; built every feature across 5 repos, the websites, and 20+ blog posts.</li>
+            <li>Integrations for Claude Code, Codex, LangChain, Langfuse, OpenAI/Anthropic APIs, AWS Bedrock, Google Gemini (ADK), NVIDIA NemoClaw, and LiteLLM.</li>
+            <li>Built and launched in under 2 months; 100+ stars, 25 contributors, 25K+ downloads.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="cloud">
+        <div class="when">2022 – 2026<small>Overclock Labs</small></div>
+        <div>
+          <h3>Akash Network</h3>
+          <p class="role">VP, Product &amp; Engineering</p>
+          <ul>
+            <li>Led product, engineering, and design for a two-sided marketplace for cloud compute with an emphasis on GPUs for AI inference and training; joined the exec team within 6 months.</li>
+            <li>Moved the roadmap to a heavily open-source model with community SIG and working-group based development.</li>
+            <li>Shipped the GPU marketplace, Deployment Console, Provider Console, Confidential Computing, AkashML inference, HomeNode, and public APIs, driving up to 10× year-over-year growth.</li>
+            <li>Built the DevOps/SRE function, hired 10 across engineering, DevOps, and design, closed early customer and partner deals, and spoke at a dozen conferences.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="cloud">
+        <div class="when">2020 – 2022</div>
+        <div>
+          <h3>Kentik</h3>
+          <p class="role">Director, Product Management</p>
+          <ul>
+            <li>Launched the Digital Experience Monitoring line (synthetic, BGP, agent-network, and end-user monitoring) from the ground up; 40× ARR growth in 6 quarters.</li>
+            <li>Owned platform APIs and the New Relic partnership roadmap; led a cross-functional GTM team as "virtual GM" and helped close the first 15 deals.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="cloud">
+        <div class="when">2019 – 2020<small>acquired by IBM</small></div>
+        <div>
+          <h3>HashiCorp</h3>
+          <p class="role">Sr. Product Manager, Terraform Cloud</p>
+          <ul>
+            <li>Owned the self-serve Terraform Cloud launch and growth from 0 to 60K users.</li>
+            <li>Shipped remote operations, self-serve billing and payments (Stripe), user management, and developer-experience improvements; drove product-led growth through data-driven onboarding, activation, and retention.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="cloud">
+        <div class="when">2017 – 2019</div>
+        <div>
+          <h3>New Relic</h3>
+          <p class="role">Sr. Product Manager, APM</p>
+          <ul>
+            <li>Lead PM for Application Performance Monitoring, ~60% of ~$450M ARR at the time.</li>
+            <li>Owned .NET / Microsoft / Azure strategy (~$60M ARR) and shaped APM for Kubernetes and containers, plus APM pricing.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="hw">
+        <div class="when">2015 – 2017<small>acquired by Datto</small></div>
+        <div>
+          <h3>Open Mesh</h3>
+          <p class="role">Director of Product</p>
+          <ul>
+            <li>First product hire; owned the roadmap for the full hardware, firmware, and cloud-management SaaS portfolio.</li>
+            <li>Conceived and launched 2 new product lines that were central to the company's acquisition.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="hw">
+        <div class="when">2012 – 2015<small>acquired by Riverbed</small></div>
+        <div>
+          <h3>Xirrus</h3>
+          <p class="role">Sr. Product Manager</p>
+          <ul>
+            <li>Enterprise Wi‑Fi, switching, and network-management portfolio ($50M+); managed the strategic OEM partnership with Avaya.</li>
+            <li>Launched Wi‑Fi Designer Cloud (predictive RF planner) and Xirrus Access Manager (VM-based guest management).</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-era="hw">
+        <div class="when">2007 – 2012<small>acquired by Google</small></div>
+        <div>
+          <h3>Motorola</h3>
+          <p class="role">Sr. Engineer → Sr. Staff Engineer / Tech Lead</p>
+          <ul>
+            <li>Developed firmware and software for IP video devices; hired as a test engineer, promoted to development within a year, then to tech lead of the "video over wireless" initiative.</li>
+            <li>Owned the software stack for the Motorola VAP consumer Wi‑Fi device, leading a 13-person team across San Diego and Bangalore.</li>
+            <li>Delivered 30+ releases across 3 hardware platforms, winning a dozen tier‑1/2/3 telcos and shipping more than 5 million devices.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+    <p class="earlier">Earlier: Software Developer, Yardi Systems (2004 – 2006).</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><h2>Education</h2></div>
+    <div class="edu">
+      <div><b>MBA</b><span>University of San Diego · Dean's scholarship</span></div>
+      <div><b>MS, Electrical Engineering</b><span>University of Southern California</span></div>
+      <div><b>BS, Electrical Engineering</b><span>Andhra University</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Anil Murty · Portland, OR</span>
+    <span><a href="https://github.com/anilmurty">GitHub</a> · <a href="https://www.linkedin.com/in/anilmurty">LinkedIn</a> · <a href="https://x.com/anilmurty_ai">X</a> · <a href="https://tokenjam.dev">tokenjam.dev</a> · <a href="https://metabldr.com">metabldr.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Live star counts; static numbers above are the fallback if the API is unavailable.
+  document.querySelectorAll('[data-repo]').forEach(async el => {
+    try {
+      const r = await fetch('https://api.github.com/repos/' + el.dataset.repo);
+      if (!r.ok) return;
+      const d = await r.json();
+      el.textContent = '★ ' + d.stargazers_count.toLocaleString();
+      if (el.dataset.repo === 'Metabuilder-Labs/tokenjam') {
+        document.querySelector('[data-stat="stars"]').textContent = d.stargazers_count.toLocaleString();
+        document.querySelector('[data-stat="forks"]').textContent = d.forks_count.toLocaleString();
+      }
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>
