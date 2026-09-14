@@ -144,6 +144,8 @@
   .job .when { font-family: "IBM Plex Mono", monospace; font-size: .82rem; color: var(--muted); padding-top: .3rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .job .when small { display: block; font-size: .72rem; margin-top: .25rem; color: var(--muted); opacity: .8; white-space: normal; }
   .job h3 { font-size: 1.12rem; }
+  .job h3 a { color: var(--ink); }
+  .job h3 a:hover { color: var(--blue); }
   .job .role { color: var(--muted); font-size: .95rem; margin: .15rem 0 .6rem; }
   .job ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .95rem; display: grid; gap: .3rem; }
   .job ul li::marker { color: var(--era); }
@@ -200,7 +202,7 @@
       <li class="job" data-era="cloud">
         <div class="when">2026 – present</div>
         <div>
-          <h3>TokenJam</h3>
+          <h3><a href="https://tokenjam.dev">TokenJam</a></h3>
           <p class="role">Solo Founder</p>
           <ul>
             <li>AI spend control plane for FinOps teams: see every dollar agents spend, attribute it across departments, agents, providers, models and tools, find waste, and enforce policy. Plus an open-source CLI for individual Claude Code and Codex users.</li>
@@ -213,7 +215,7 @@
       <li class="job" data-era="cloud">
         <div class="when">2022 – 2026<small>Overclock Labs</small></div>
         <div>
-          <h3>Akash Network</h3>
+          <h3><a href="https://akash.network">Akash Network</a></h3>
           <p class="role">VP, Product &amp; Engineering</p>
           <ul>
             <li>Led product, engineering, and design for a two-sided marketplace for cloud compute with an emphasis on GPUs for AI inference and training; joined the exec team within 6 months.</li>
@@ -224,9 +226,9 @@
         </div>
       </li>
       <li class="job" data-era="cloud">
-        <div class="when">2020 – 2022</div>
+        <div class="when">2020 – 2022<small>acquired by Infoblox</small></div>
         <div>
-          <h3>Kentik</h3>
+          <h3><a href="https://www.kentik.com">Kentik</a></h3>
           <p class="role">Director, Product Management</p>
           <ul>
             <li>Launched the Digital Experience Monitoring line (synthetic, BGP, agent-network, and end-user monitoring) from the ground up; 40× ARR growth in 6 quarters.</li>
@@ -237,7 +239,7 @@
       <li class="job" data-era="cloud">
         <div class="when">2019 – 2020<small>acquired by IBM</small></div>
         <div>
-          <h3>HashiCorp</h3>
+          <h3><a href="https://www.hashicorp.com">HashiCorp</a></h3>
           <p class="role">Sr. Product Manager, Terraform Cloud</p>
           <ul>
             <li>Owned the self-serve Terraform Cloud launch and growth from 0 to 60K users.</li>
@@ -248,7 +250,7 @@
       <li class="job" data-era="cloud">
         <div class="when">2017 – 2019</div>
         <div>
-          <h3>New Relic</h3>
+          <h3><a href="https://newrelic.com">New Relic</a></h3>
           <p class="role">Sr. Product Manager, APM</p>
           <ul>
             <li>Lead PM for Application Performance Monitoring, ~60% of ~$450M ARR at the time.</li>
@@ -259,7 +261,7 @@
       <li class="job" data-era="hw">
         <div class="when">2015 – 2017<small>acquired by Datto</small></div>
         <div>
-          <h3>Open Mesh</h3>
+          <h3><a href="https://www.datto.com">Open Mesh</a></h3>
           <p class="role">Director of Product</p>
           <ul>
             <li>First product hire; owned the roadmap for the full hardware, firmware, and cloud-management SaaS portfolio.</li>
@@ -268,9 +270,9 @@
         </div>
       </li>
       <li class="job" data-era="hw">
-        <div class="when">2012 – 2015<small>acquired by Riverbed</small></div>
+        <div class="when">2012 – 2015<small>acquired by Cambium Networks</small></div>
         <div>
-          <h3>Xirrus</h3>
+          <h3><a href="https://www.cambiumnetworks.com">Xirrus</a></h3>
           <p class="role">Sr. Product Manager</p>
           <ul>
             <li>Enterprise Wi‑Fi, switching, and network-management portfolio ($50M+); managed the strategic OEM partnership with Avaya.</li>
@@ -281,7 +283,7 @@
       <li class="job" data-era="hw">
         <div class="when">2007 – 2012<small>acquired by Google</small></div>
         <div>
-          <h3>Motorola</h3>
+          <h3><a href="https://www.motorola.com">Motorola</a></h3>
           <p class="role">Sr. Engineer → Sr. Staff Engineer / Tech Lead</p>
           <ul>
             <li>Developed firmware and software for IP video devices; hired as a test engineer, promoted to development within a year, then to tech lead of the "video over wireless" initiative.</li>
@@ -291,7 +293,7 @@
         </div>
       </li>
     </ol>
-    <p class="earlier">Earlier: Software Developer, Yardi Systems (2004 – 2006).</p>
+    <p class="earlier">Earlier: Software Developer, <a href="https://www.yardi.com">Yardi Systems</a> (2004 – 2006).</p>
   </div>
 </section>
 <section id="education">
@@ -332,8 +334,22 @@
 </section>
 <section id="projects">
   <div class="wrap">
-    <div class="section-head"><h2>Open Source Projects</h2><p>Products I've shipped and the tools I built along the way. All built solo, with AI coding tools (Claude Code, Codex, v0) doing much of the typing.</p></div>
+    <div class="section-head"><h2>Open Source Projects</h2><p>Projects I contributed to in my roles at HashiCorp and Akash, then products and tools I built solo, with AI coding tools (Claude Code, Codex, v0) doing much of the typing.</p></div>
     <div class="grid">
+      <a class="card" href="https://github.com/hashicorp/terraform">
+        <div class="top"><span class="kind">Contributor · HashiCorp</span></div>
+        <h3>Terraform</h3>
+        <p>Infrastructure as code. As Sr. PM for Terraform Cloud I owned its self-serve launch and growth to 60K users and shipped remote operations, billing, and user management.</p>
+        <span class="stack">Go · HCL</span>
+        <span class="meta"><span data-repo="hashicorp/terraform"></span></span>
+      </a>
+      <a class="card" href="https://github.com/akash-network/node">
+        <div class="top"><span class="kind">Contributor · Akash Network</span></div>
+        <h3>Akash Network</h3>
+        <p>Decentralized GPU cloud marketplace. As VP of Product &amp; Engineering I moved the roadmap to an open-source SIG/WG model and shipped the GPU marketplace, consoles, AkashML, and public APIs.</p>
+        <span class="stack">Go · Cosmos SDK · Kubernetes</span>
+        <span class="meta"><span data-repo="akash-network/node"></span></span>
+      </a>
       <a class="card" href="https://github.com/anilmurty/twinklebot-mobile-app">
         <div class="top"><span class="kind product">Product</span></div>
         <h3>Twinklebot</h3>
